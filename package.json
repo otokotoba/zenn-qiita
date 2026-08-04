@@ -4,7 +4,12 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "new:article": "zeta new $(openssl rand -hex 7)",
+    "preview:zenn": "pn exec zenn preview --open",
+    "preview:qiita": "pn exec qiita preview",
+    "watch": "node scripts/watch.js",
+    "dev": "concurrently 'pnpm:preview:*' 'pnpm:watch'",
+    "publish:qiita": "pn exec qiita publish --all"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +24,8 @@
   "type": "module",
   "devDependencies": {
     "@qiita/qiita-cli": "^1.10.0",
+    "chokidar": "^5.0.0",
+    "concurrently": "^10.0.4",
     "zenn-cli": "^0.5.2"
   }
 }
